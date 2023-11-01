@@ -1,5 +1,11 @@
 from flask import Flask, render_template, request
 from datetime import datetime, timezone, timedelta
+import firebase_admin
+from firebase_admin import credentials, firestore
+cred = credentials.Certificate("serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
 
 app = Flask(__name__)
 
@@ -9,6 +15,7 @@ def index():
     X += "<a href=/db>課程網頁</a><br>"
     X += "<a href=/tcyang?nick=tcyang>個人介紹及系統時間</a><br>"
     X += "<a href=/account>表單傳值</a><br>"
+    X += "<br><a href=/read>讀取Firestore資料</a><br>"
     return X
 
 @app.route("/db")
