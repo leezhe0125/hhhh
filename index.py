@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from datetime import datetime, timezone, timedelta
 import firebase_admin
 from firebase_admin import credentials, firestore
-cred = credentials.Certificate("serviceAccountKey.json")
+cred = credentials.Certificate("aaaa.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
